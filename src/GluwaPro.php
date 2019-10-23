@@ -74,7 +74,7 @@ class GluwaPro {
     /**
      * @private array RequiredFunctions.
      */
-    private $RequiredFunctions = array('gmp_init');
+    private $RequiredFunctions = array('gmp_init', 'bcmul', 'bcdiv');
 
     /**
      * @private object FunctionExists.
@@ -400,7 +400,7 @@ class GluwaPro {
         {
             if (!function_exists($function))
             {
-                return array('ok' => false, 'error' => array("code" => 408, "error" => 'Function '.$function.' is unavailable. Please make sure php_gmp extension is available'));
+                return array('ok' => false, 'error' => array("code" => 408, "error" => 'Function '.$function.' is unavailable. Please make sure php_gmp, php_bcmath extensions is available'));
             }
         }
         return array('ok' => true);

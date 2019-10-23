@@ -1,4 +1,10 @@
 <?php
+
+/*
+* based on https://github.com/kornrunner/php-keccak
+* support for php 5.6.x
+*/
+
 namespace Gluwa\Keccak;
 
 use Exception;

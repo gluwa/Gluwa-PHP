@@ -18,16 +18,16 @@ class GluwaProTest extends TestCase
     private $Configuration_MasterEthereumAddress = '';
 
     private $PostTransaction_Currency = 'USDG';
-    private $PostTransaction_Amount = '1';
+    private $PostTransaction_Amount = '100';
     private $PostTransaction_Target = '';
     private $PostTransaction_MerchantOrderID = '';
     private $PostTransaction_Note = '';
     private $PostTransaction_Expiry = 1800;
 
     private $GetPaymentQRCode_Currency = 'USDG';
-    private $GetPaymentQRCode_Amount = '1';
-    private $GetPaymentQRCode_Note = '';
-    private $GetPaymentQRCode_MerchantOrderID = '';
+    private $GetPaymentQRCode_Amount = '100';
+    private $GetPaymentQRCode_Note = 'NoteContent';
+    private $GetPaymentQRCode_MerchantOrderID = '250';
     private $GetPaymentQRCode_Expiry = 1800;
 
     private $GetListTransactionHistory_Currency = 'USDG';
@@ -40,8 +40,8 @@ class GluwaProTest extends TestCase
 
     private $GetAddresses_Currency = 'USDG';
     
-    private $ValidateWebhook_Payload = 'Gluwa';
-    private $ValidateWebhook_Signature = 'BmPnsbst90Q+38/BXb3QBp+kXw8Qx6mM5qYM4ggaj+c=';
+    private $ValidateWebhook_Payload = '';
+    private $ValidateWebhook_Signature = '';
 
 
     /**
@@ -166,6 +166,9 @@ class GluwaProTest extends TestCase
             if (array_key_exists('code', $Response)) {
                 $this->assertEquals($Response['code'], 200);
                 $Response = $Response['response'];
+                echo PHP_EOL;
+                var_dump($Response);
+                echo PHP_EOL;
             } else {
                 throw new \Exception($Response);
             }

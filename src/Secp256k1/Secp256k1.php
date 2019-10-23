@@ -1,5 +1,10 @@
 <?php
 
+/*
+* based on https://github.com/kornrunner/php-secp256k1
+* support for php 5.6.x
+*/
+
 namespace Gluwa\Secp256k1;
 
 use InvalidArgumentException;

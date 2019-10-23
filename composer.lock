@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "75c7074c728af057d2c322f0b1a05bd1",
+    "content-hash": "04473472111c2ab385e1bce4d5fe0592",
     "packages": [
         {
             "name": "fgrosse/phpasn1",
@@ -74,45 +74,6 @@
                 "x690"
             ],
             "time": "2018-12-02T01:31:42+00:00"
-        },
-        {
-            "name": "mbezhanov/ethereum-converter",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mbezhanov/ethereum-converter.git",
-                "reference": "e7ebc6821f1ac6503700d00477c42ade43586499"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mbezhanov/ethereum-converter/zipball/e7ebc6821f1ac6503700d00477c42ade43586499",
-                "reference": "e7ebc6821f1ac6503700d00477c42ade43586499",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bezhanov\\Ethereum\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marin Bezhanov",
-                    "email": "marin.bezhanov@gmail.com"
-                }
-            ],
-            "description": "A simple library for performing conversion between various Ethereum units",
-            "time": "2017-11-30T05:18:02+00:00"
         },
         {
             "name": "mdanter/ecc",

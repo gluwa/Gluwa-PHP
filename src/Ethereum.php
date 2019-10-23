@@ -5,7 +5,7 @@ namespace Gluwa;
 use Gluwa\Keccak\Keccak;
 use Gluwa\Secp256k1\Secp256k1;
 
-use Bezhanov\Ethereum\Converter;
+use Gluwa\Converter;
 
 class Ethereum
 {
