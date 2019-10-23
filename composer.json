@@ -2,6 +2,7 @@
     "name": "gluwa/gluwa-php",
     "description": "Gluwa API v1 library for PHP",
     "type": "library",
+    "license": "Apache-2.0",
     "require": {
         "mdanter/ecc": "0.4.*"
     },
