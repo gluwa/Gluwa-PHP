@@ -126,7 +126,7 @@ class GluwaPro {
     }
 
     private function setAPIHost() {
-        $this->host = $this->__DEV__ ? 'https://api-test.gluwa.com' : 'https://api.gluwa.com';
+        $this->host = $this->__DEV__ ? 'https://sandbox.api.gluwa.com' : 'https://api.gluwa.com';
     }
 
     private function getAuthorization() {
