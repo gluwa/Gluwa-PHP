@@ -5,11 +5,11 @@ namespace Gluwa;
 use Gluwa\Ethereum;
 
 /**
- * Class GluwaPro
+ * Class Gluwa
  *
- * @package GluwaPro
+ * @package Gluwa
  */
-class GluwaPro {
+class Gluwa {
 
     /**
      * @const string API Host.
@@ -82,41 +82,41 @@ class GluwaPro {
     private $FunctionExists = null;
 
     /**
-     * Instantiates a new GluwaPro super-class object.
+     * Instantiates a new Gluwa super-class object.
      *
      * @param array $config
      *
-     * @throws GluwaProSDKException
+     * @throws GluwaSDKException
      */
     
     public function __construct(array $config = []) {
         $APIKey = isset($config['APIKey']) ? $config['APIKey'] : getenv(static::API_KEY);
         if (!$APIKey) {
-            throw new GluwaProSDKException('Required "APIKey" key not supplied in config.');
+            throw new GluwaSDKException('Required "APIKey" key not supplied in config.');
         }
         $this->APIKey = $APIKey;
 
         $APISecret = isset($config['APISecret']) ? $config['APISecret'] : getenv(static::API_SECRET);
         if (!$APISecret) {
-            throw new GluwaProSDKException('Required "APISecret" key not supplied in config.');
+            throw new GluwaSDKException('Required "APISecret" key not supplied in config.');
         }
         $this->APISecret = $APISecret;
 
         $WebhookSecret = isset($config['WebhookSecret']) ? $config['WebhookSecret'] : getenv(static::WEBHOOK_SECRET);
         if (!$WebhookSecret) {
-            throw new GluwaProSDKException('Required "WebhookSecret" key not supplied in config.');
+            throw new GluwaSDKException('Required "WebhookSecret" key not supplied in config.');
         }
         $this->WebhookSecret = $WebhookSecret;
 
         $MasterEthereumPrivateKey = isset($config['MasterEthereumPrivateKey']) ? $config['MasterEthereumPrivateKey'] : getenv(static::MASTER_ETHEREUM_PRIVATE_KEY);
         if (!$MasterEthereumPrivateKey) {
-            throw new GluwaProSDKException('Required "MasterEthereumPrivateKey" key not supplied in config.');
+            throw new GluwaSDKException('Required "MasterEthereumPrivateKey" key not supplied in config.');
         }
         $this->MasterEthereumPrivateKey = $MasterEthereumPrivateKey;
 
         $MasterEthereumAddress = isset($config['MasterEthereumAddress']) ? $config['MasterEthereumAddress'] : getenv(static::MASTER_ETHEREUM_ADDRESS);
         if (!$MasterEthereumAddress) {
-            throw new GluwaProSDKException('Required "MasterEthereumAddress" key not supplied in config.');
+            throw new GluwaSDKException('Required "MasterEthereumAddress" key not supplied in config.');
         }
         $this->MasterEthereumAddress = $MasterEthereumAddress;
 
@@ -193,7 +193,7 @@ class GluwaPro {
         try {
             $response = json_decode($response, true);
         } catch (\Exception $e) {
-            throw new GluwaProSDKException($e->getMessage());
+            throw new GluwaSDKException($e->getMessage());
         }
         return array('code' => $httpcode, 'response' => $response);
     }
@@ -229,7 +229,7 @@ class GluwaPro {
         if ($Result['code'] == 200) {
             return $Result;
         } else {
-            throw new GluwaProSDKException($Result['response'], $Result['code']);
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 
@@ -254,7 +254,7 @@ class GluwaPro {
         if ($Result['code'] == 200) {
             return $Result;
         } else {
-            throw new GluwaProSDKException($Result['response'], $Result['code']);
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 
@@ -317,10 +317,10 @@ class GluwaPro {
             if ($Result['code'] == 200) {
                 return $Result;
             } else {
-                throw new GluwaProSDKException($Result['response'], $Result['code']);
+                throw new GluwaSDKException($Result['response'], $Result['code']);
             }
         } else {
-            throw new GluwaProSDKException($Result['response'], $Result['code']);
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 
@@ -351,7 +351,7 @@ class GluwaPro {
         if ($Result['code'] == 200) {
             return $Result;
         } else {
-            throw new GluwaProSDKException($Result['response'], $Result['code']);
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 
@@ -378,7 +378,7 @@ class GluwaPro {
         if ($Result['code'] == 200) {
             return $Result;
         } else {
-            throw new GluwaProSDKException($Result['response'], $Result['code']);
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 

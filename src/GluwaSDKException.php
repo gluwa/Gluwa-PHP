@@ -2,7 +2,7 @@
 
 namespace Gluwa;
 
-class GluwaProSDKException extends \Exception
+class GluwaSDKException extends \Exception
 {
 
     private $innerErrors = array();

@@ -2,20 +2,20 @@
 
 namespace Gluwa;
 
-use Gluwa\GluwaPro;
-use \Gluwa\GluwaProSDKException as GluwaException;
+use Gluwa\Gluwa;
+use \Gluwa\GluwaSDKException as GluwaException;
 
-class GluwaProTest extends TestCase
+class GluwaTest extends TestCase
 {
 
-    private $GluwaPro = null;
+    private $Gluwa = null;
 
     private $Configuration_DEV = true;
-    private $Configuration_APIKey = '';
-    private $Configuration_APISecret = '';
-    private $Configuration_WebhookSecret = '';
-    private $Configuration_MasterEthereumPrivateKey = '';
-    private $Configuration_MasterEthereumAddress = '';
+    private $Configuration_APIKey = 'e7b81a2e-326d-4116-9f22-698a164fb4a9';
+    private $Configuration_APISecret = 'pDIlEKQjzM7zaG4yTp0t0OZ40_Sxk_sASIByOMUZqHm22ZytHxOWP0DE2C12lpXC';
+    private $Configuration_WebhookSecret = 'Aam3JTaJVvdSt4Ejukbychvp8ZMNBrpa-6aYSpu9Fw0wX-vBOn5A__HEi4299xL0';
+    private $Configuration_MasterEthereumPrivateKey = '0xbc4d27937ef272288f89203dcad09319c0f369f0bbc796a7005635fb64088f5d';
+    private $Configuration_MasterEthereumAddress = '0x74515A37703D7ba67D56Fe3CF0d0977966C87660';
 
     private $PostTransaction_Currency = 'USDG';
     private $PostTransaction_Amount = '100';
@@ -45,11 +45,11 @@ class GluwaProTest extends TestCase
 
 
     /**
-     * Init GluwaPro
+     * Init Gluwa
      */
     public function setUp() {
         parent::setUp();
-        $this->GluwaPro = new GluwaPro([
+        $this->Gluwa = new Gluwa([
             '__DEV__' => $this->Configuration_DEV, // If you want to run test on testnet, change this value to true. APIKey, APISecret and WebhookSecret must be filled with the values ​​obtained from Gluwa Dashboard's Sandbox Mode.
             'APIKey' => $this->Configuration_APIKey,
             'APISecret' => $this->Configuration_APISecret,
@@ -64,7 +64,7 @@ class GluwaProTest extends TestCase
      */
     public function testPostTransaction() {
         try {
-            $Response = $this->GluwaPro->postTransaction([
+            $Response = $this->Gluwa->postTransaction([
                 'Currency' => $this->PostTransaction_Currency,
                 'Amount' => $this->PostTransaction_Amount,
                 'Target' => $this->PostTransaction_Target, // Required - Target Address
@@ -83,7 +83,7 @@ class GluwaProTest extends TestCase
      */
     public function testGetCreatePaymentQRCode() {
         try {
-            $Response = $this->GluwaPro->getPaymentQRCode([
+            $Response = $this->Gluwa->getPaymentQRCode([
                 'Currency' => $this->GetPaymentQRCode_Currency,
                 'Amount' => $this->GetPaymentQRCode_Amount,
                 'Note' => $this->GetPaymentQRCode_Note,
@@ -101,7 +101,7 @@ class GluwaProTest extends TestCase
      */
     public function testGetListTransactionHistory() {
         try {
-            $Response = $this->GluwaPro->getListTransactionHistory([
+            $Response = $this->Gluwa->getListTransactionHistory([
                 'Currency' => $this->GetListTransactionHistory_Currency,
                 'Limit' => $this->GetListTransactionHistory_Limit, // optional
                 'Status' => $this->GetListTransactionHistory_Status, // optional
@@ -118,7 +118,7 @@ class GluwaProTest extends TestCase
      */
     public function testGetListTransactionDetail() {
         try {
-            $Response = $this->GluwaPro->getListTransactionDetail([
+            $Response = $this->Gluwa->getListTransactionDetail([
                 'Currency' => $this->GetListTransactionDetail_Currency,
                 'TxnHash' => $this->GetListTransactionDetail_TxnHash,
             ]);
@@ -133,7 +133,7 @@ class GluwaProTest extends TestCase
      */
     public function testGetAddresses() {
         try {
-            $Response = $this->GluwaPro->getAddresses([
+            $Response = $this->Gluwa->getAddresses([
                 'Currency' => $this->GetAddresses_Currency,
             ]);
             $this->ParseResponse($Response);
@@ -153,7 +153,7 @@ class GluwaProTest extends TestCase
      * $Payload = file_get_contents("php://input");
      */
     public function testValidateWebhook() {
-        $Response = $this->GluwaPro->validateWebhook([
+        $Response = $this->Gluwa->validateWebhook([
             'Payload' => $this->ValidateWebhook_Payload,
             'Signature' => $this->ValidateWebhook_Signature,
         ]);
