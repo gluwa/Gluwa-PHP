@@ -11,21 +11,21 @@ class GluwaTest extends TestCase
     private $Gluwa = null;
 
     private $Configuration_DEV = true;
-    private $Configuration_APIKey = 'e7b81a2e-326d-4116-9f22-698a164fb4a9';
-    private $Configuration_APISecret = 'pDIlEKQjzM7zaG4yTp0t0OZ40_Sxk_sASIByOMUZqHm22ZytHxOWP0DE2C12lpXC';
-    private $Configuration_WebhookSecret = 'Aam3JTaJVvdSt4Ejukbychvp8ZMNBrpa-6aYSpu9Fw0wX-vBOn5A__HEi4299xL0';
-    private $Configuration_MasterEthereumPrivateKey = '0xbc4d27937ef272288f89203dcad09319c0f369f0bbc796a7005635fb64088f5d';
-    private $Configuration_MasterEthereumAddress = '0x74515A37703D7ba67D56Fe3CF0d0977966C87660';
+    private $Configuration_APIKey = '';
+    private $Configuration_APISecret = '';
+    private $Configuration_WebhookSecret = '';
+    private $Configuration_MasterEthereumPrivateKey = '';
+    private $Configuration_MasterEthereumAddress = '';
 
     private $PostTransaction_Currency = 'USDG';
-    private $PostTransaction_Amount = '100';
+    private $PostTransaction_Amount = '0.1';
     private $PostTransaction_Target = '';
     private $PostTransaction_MerchantOrderID = '';
     private $PostTransaction_Note = '';
     private $PostTransaction_Expiry = 1800;
 
     private $GetPaymentQRCode_Currency = 'USDG';
-    private $GetPaymentQRCode_Amount = '100';
+    private $GetPaymentQRCode_Amount = '1';
     private $GetPaymentQRCode_Note = 'NoteContent';
     private $GetPaymentQRCode_MerchantOrderID = '250';
     private $GetPaymentQRCode_Expiry = 1800;
@@ -164,11 +164,8 @@ class GluwaTest extends TestCase
     private function ParseResponse(&$Response) {
         if (is_array($Response)) {
             if (array_key_exists('code', $Response)) {
-                $this->assertEquals($Response['code'], 200);
+                $this->assertLessThanOrEqual($Response['code'], 200);
                 $Response = $Response['response'];
-                echo PHP_EOL;
-                var_dump($Response);
-                echo PHP_EOL;
             } else {
                 throw new \Exception($Response);
             }
