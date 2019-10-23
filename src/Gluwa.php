@@ -226,7 +226,7 @@ class Gluwa {
 
         $Result = $this->curl($Args);
 
-        if ($Result['code'] == 200) {
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             return $Result;
         } else {
             throw new GluwaSDKException($Result['response'], $Result['code']);
@@ -251,7 +251,7 @@ class Gluwa {
 
         $Result = $this->curl($Args);
 
-        if ($Result['code'] == 200) {
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             return $Result;
         } else {
             throw new GluwaSDKException($Result['response'], $Result['code']);
@@ -277,7 +277,7 @@ class Gluwa {
         ];
 
         $Result = $this->curl($Args);
-        if ($Result['code'] == 200) {
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             $Fee = $Result['response']['MinimumFee'];
 
             $Nonce = time();
@@ -314,7 +314,7 @@ class Gluwa {
             ];
             $Result = $this->curl($Args);
             
-            if ($Result['code'] == 200) {
+            if ($Result['code'] >= 200 && $Result['code'] <= 300) {
                 return $Result;
             } else {
                 throw new GluwaSDKException($Result['response'], $Result['code']);
@@ -348,7 +348,7 @@ class Gluwa {
 
         $Result = $this->curl($Args);
 
-        if ($Result['code'] == 200) {
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             return $Result;
         } else {
             throw new GluwaSDKException($Result['response'], $Result['code']);
@@ -375,7 +375,7 @@ class Gluwa {
 
         $Result = $this->curl($Args);
 
-        if ($Result['code'] == 200) {
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             return $Result;
         } else {
             throw new GluwaSDKException($Result['response'], $Result['code']);
