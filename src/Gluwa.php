@@ -191,7 +191,9 @@ class Gluwa {
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close ($ch);
         try {
-            $response = json_decode($response, true);
+            $decoded = json_decode($response, true);
+            if ($decoded !== null)
+                $response = $decoded;
         } catch (\Exception $e) {
             throw new GluwaSDKException($e->getMessage());
         }
@@ -225,7 +227,7 @@ class Gluwa {
         ];
 
         $Result = $this->curl($Args);
-
+        
         if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             return $Result;
         } else {
