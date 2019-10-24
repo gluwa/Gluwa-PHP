@@ -9,8 +9,8 @@ namespace Gluwa\Keccak;
 
 use Exception;
 
-use function mb_strlen;
-use function mb_substr;
+// use function mb_strlen;
+// use function mb_substr;
 
 final class Keccak
 {
@@ -20,7 +20,7 @@ final class Keccak
     private static $ENCODING = '8bit';
     private static $keccakf_rotc = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 2, 14, 27, 41, 56, 8, 25, 43, 62, 18, 39, 61, 20, 44];
     private static $keccakf_piln = [10, 7, 11, 17, 18, 3, 5, 16, 8, 21, 24, 4, 15, 23, 19, 13, 12,2, 20, 14, 22, 9, 6, 1];
-    private static $x64 = (PHP_INT_SIZE === 8);
+    // private static $x64 = (PHP_INT_SIZE === 8);
 
     private static function keccakf64(&$st, $rounds) {
         $keccakf_rndc = [
@@ -249,7 +249,7 @@ final class Keccak
     }
 
     private static function keccak($in_raw, $capacity, $outputlength, $suffix, $raw_output) {
-        return self::$x64
+        return (PHP_INT_SIZE === 8)
             ? self::keccak64($in_raw, $capacity, $outputlength, $suffix, $raw_output)
             : self::keccak32($in_raw, $capacity, $outputlength, $suffix, $raw_output);
     }
