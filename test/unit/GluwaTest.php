@@ -11,15 +11,15 @@ class GluwaTest extends TestCase
     private $Gluwa = null;
 
     private $Configuration_DEV = true;
-    private $Configuration_APIKey = '';
-    private $Configuration_APISecret = '';
-    private $Configuration_WebhookSecret = '';
-    private $Configuration_MasterEthereumPrivateKey = '';
-    private $Configuration_MasterEthereumAddress = '';
+    private $Configuration_APIKey = 'cc31262e-214d-40fd-b165-3903b15b49ed';
+    private $Configuration_APISecret = 'HeugDsZuAMhP3dfrfbTdG_1IVJLzY9YGJen3fgBkw8aGhleKo2YAVLPFQleXPoIg';
+    private $Configuration_WebhookSecret = 'p1I0MzOPw-GwSYow5rqZ-yt-0yFfQc6RS0dhUgg3wBbOibD0HYOB2JS0IwqUjs8_';
+    private $Configuration_MasterEthereumPrivateKey = '0xbc4d27937ef272288f89203dcad09319c0f369f0bbc796a7005635fb64088f5d';
+    private $Configuration_MasterEthereumAddress = '0x74515A37703D7ba67D56Fe3CF0d0977966C87660';
 
     private $PostTransaction_Currency = 'USDG';
     private $PostTransaction_Amount = '0.1';
-    private $PostTransaction_Target = '';
+    private $PostTransaction_Target = '0x39810aEf19d717c089Cea84CE5F3c4890fA705Ac';
     private $PostTransaction_MerchantOrderID = '';
     private $PostTransaction_Note = '';
     private $PostTransaction_Expiry = 1800;
@@ -36,7 +36,7 @@ class GluwaTest extends TestCase
     private $GetListTransactionHistory_Offset = '0';
 
     private $GetListTransactionDetail_Currency = 'USDG';
-    private $GetListTransactionDetail_TxnHash = '';
+    private $GetListTransactionDetail_TxnHash = '0xb4984ec8aa5a9e5c6ea453cc02b43eafb28bdc589360ea34de9427be483763a4';
 
     private $GetAddresses_Currency = 'USDG';
     
@@ -166,6 +166,9 @@ class GluwaTest extends TestCase
             if (array_key_exists('code', $Response)) {
                 $this->assertLessThanOrEqual($Response['code'], 200);
                 $Response = $Response['response'];
+                print(PHP_EOL);
+                var_dump($Response);
+                print(PHP_EOL);
             } else {
                 throw new \Exception($Response);
             }

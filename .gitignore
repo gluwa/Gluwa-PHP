@@ -1,5 +1,4 @@
 composer.phar
-/vendor/
 phpunit
 phpunit.xml.dist
 
