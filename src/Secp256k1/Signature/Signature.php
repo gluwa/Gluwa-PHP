@@ -5,7 +5,7 @@ namespace Gluwa\Secp256k1\Signature;
 use Gluwa\Secp256k1\Serializer\HexSignatureSerializer;
 use Gluwa\Secp256k1\Signature\SignatureInterface;
 
-use Mdanter\Ecc\Crypto\Signature\Signature as EccSignature;
+use Gluwa\Ecc\Crypto\Signature\Signature as EccSignature;
 
 class Signature extends EccSignature implements SignatureInterface
 {

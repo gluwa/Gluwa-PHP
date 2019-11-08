@@ -2,8 +2,8 @@
 
 namespace Gluwa\Secp256k1\Serializer;
 
-use Mdanter\Ecc\Serializer\PrivateKey\PrivateKeySerializerInterface;
-use Mdanter\Ecc\Crypto\Key\PrivateKeyInterface;
+use Gluwa\Ecc\Serializer\PrivateKey\PrivateKeySerializerInterface;
+use Gluwa\Ecc\Crypto\Key\PrivateKeyInterface;
 
 class HexPrivateKeySerializer implements PrivateKeySerializerInterface
 {

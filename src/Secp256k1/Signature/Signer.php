@@ -3,7 +3,7 @@
 namespace Gluwa\Secp256k1\Signature;
 
 use GMP;
-use Mdanter\Ecc\Crypto\Signature\Signer as EccSigner;
+use Gluwa\Ecc\Crypto\Signature\Signer as EccSigner;
 
 class Signer
 {

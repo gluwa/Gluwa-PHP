@@ -5,11 +5,11 @@ namespace Gluwa;
 use Gluwa\Secp256k1\Serializer\HexPrivateKeySerializer;
 use Gluwa\Secp256k1\Signature\Signer;
 
-use Mdanter\Ecc\Crypto\Signature\Signature;
-use Mdanter\Ecc\Curves\CurveFactory;
-use Mdanter\Ecc\Curves\SecgCurve;
-use Mdanter\Ecc\EccFactory;
-use Mdanter\Ecc\Random\RandomGeneratorFactory;
+use Gluwa\Ecc\Crypto\Signature\Signature;
+use Gluwa\Ecc\Curves\CurveFactory;
+use Gluwa\Ecc\Curves\SecgCurve;
+use Gluwa\Ecc\EccFactory;
+use Gluwa\Ecc\Random\RandomGeneratorFactory;
 
 class SignatureTest extends TestCase
 {

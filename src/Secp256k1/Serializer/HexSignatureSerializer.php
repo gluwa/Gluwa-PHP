@@ -3,7 +3,7 @@
 namespace Gluwa\Secp256k1\Serializer;
 
 use InvalidArgumentException;
-use Mdanter\Ecc\Crypto\Signature\Signature;
+use Gluwa\Ecc\Crypto\Signature\Signature;
 
 class HexSignatureSerializer
 {

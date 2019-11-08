@@ -4,8 +4,8 @@ namespace Gluwa;
 
 use Gluwa\Secp256k1\Serializer\HexPrivateKeySerializer;
 
-use Mdanter\Ecc\Curves\CurveFactory;
-use Mdanter\Ecc\Curves\SecgCurve;
+use Gluwa\Ecc\Curves\CurveFactory;
+use Gluwa\Ecc\Curves\SecgCurve;
 
 class HexPrivateKeySerializerTest extends TestCase
 {
