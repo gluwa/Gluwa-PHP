@@ -140,6 +140,12 @@ class Gluwa {
             } else {
                 return '0xfb0aaa0432112779d9ac483d9d5e3961ece18eec';
             }
+        } else if ($Currency === 'sUSDCG') {
+            if ($__DEV__) {
+                return '0x5f71cbAebb9c1e8F1664a8eF2e1cFF2ED8044eE0';
+            } else {
+                return '0x39589FD5A1D4C7633142A178F2F2b30314FB2BaF';
+            }
         } else if ($Currency === 'KRWG') {
             if ($__DEV__) {
                 return '0x408b7959b3e15b8b1e8495fa9cb123c0180d44db';
@@ -283,13 +289,21 @@ class Gluwa {
             $Fee = $Result['response']['MinimumFee'];
 
             $Nonce = time();
+
+            $ConvertedAmount = strval(Ethereum::toWei($Amount, "ether"));
+            $ConvertedFee = strval(Ethereum::toWei($Fee, "ether"));
+
+            if ($htArg['Currency'] === 'sUSDCG') {
+                $ConvertedAmount = substr($ConvertedAmount, 0, strlen($ConvertedAmount) - 12);
+                $ConvertedFee = substr($ConvertedFee, 0, strlen($ConvertedFee) - 12);
+            }
     
             $Hash = Ethereum::hash([
                     ['t' => "address", 'v' => $this->getContractAddress($htArg['Currency'], $this->__DEV__)],
                     ['t' => "address", 'v' => $this->MasterEthereumAddress],
                     ['t' => "address", 'v' => $htArg['Target']],
-                    ['t' => "uint256", 'v' => strval(Ethereum::toWei($Amount, "ether"))],
-                    ['t' => "uint256", 'v' => strval(Ethereum::toWei($Fee, "ether"))],
+                    ['t' => "uint256", 'v' => $ConvertedAmount],
+                    ['t' => "uint256", 'v' => $ConvertedFee],
                     ['t' => "uint256", 'v' => $Nonce],
                 ]
             );
