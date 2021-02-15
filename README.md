@@ -40,15 +40,11 @@ $Gluwa = new Gluwa\Gluwa([
 ]);
 ```
 
-{% hint style="warning" %}
 If you are using PHP 5.6, you need to enable [**php-bcmath**](https://www.php.net/manual/en/book.bc.php) ****because it is not enabled by default prior PHP 7. If it is not installed yet, just install it. Please visit [here](https://www.php.net/manual/en/book.bc.php) for more information.
-{% endhint %}
 
-{% hint style="warning" %}
 If you receive the following message, you should install [**gmp extention** ](https://www.php.net/manual/en/book.gmp.php)on your server. Please visit [this site](https://www.php.net/manual/en/book.gmp.php) to find a solution.
 
 > Function gmp\_init is unavailable. Please make sure php\_gmp extension is available
-{% endhint %}
 
 Now you are ready to use the Gluwa API.
 
@@ -141,11 +137,6 @@ $Response2 = $Gluwa->validateWebhook([
 ]);
 ```
 
-{% tabs %}
-{% tab title="Response" %}
 | Type | Description |
 | :--- | :--- |
 | boolean | This will return `true` if it is a valid webhook. If it returns `false`, you either set an incorrect secret or the webhook did not originate from Gluwa. |
-{% endtab %}
-{% endtabs %}
-
