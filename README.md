@@ -40,7 +40,8 @@ $Gluwa = new Gluwa\Gluwa([
 ]);
 ```
 
-If you are using PHP 5.6, you need to enable [**php-bcmath**](https://www.php.net/manual/en/book.bc.php) ****because it is not enabled by default prior PHP 7. If it is not installed yet, just install it. Please visit [here](https://www.php.net/manual/en/book.bc.php) for more information.
+If you are using PHP 5.6, you need to enable [**php-bcmath**](https://www.php.net/manual/en/book.bc.php)
+because it is not enabled by default prior PHP 7. If it is not installed yet, just install it. Please visit [here](https://www.php.net/manual/en/book.bc.php) for more information.
 
 If you receive the following message, you should install [**gmp extention** ](https://www.php.net/manual/en/book.gmp.php)on your server. Please visit [this site](https://www.php.net/manual/en/book.gmp.php) to find a solution.
 
