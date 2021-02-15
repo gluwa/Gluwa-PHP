@@ -50,7 +50,7 @@ Now you are ready to use the Gluwa API.
 
 ## Method Examples
 
-#### [Create a New Transaction](../api/api.md#create-a-new-transaction)
+#### [Create a New Transaction](https://docs.gluwa.com/api/api.md#create-a-new-transaction)
 
 ```php
 $PostTransaction_Currency = '{USDG or sUSDCG or KRWG}';
@@ -70,7 +70,7 @@ $Response = $Gluwa->postTransaction([
 ]);
 ```
 
-#### [Create a Payment QR Code](../api/api.md#create-a-payment-qr-code)
+#### [Create a Payment QR Code](https://docs.gluwa.com/api/api.md#create-a-payment-qr-code)
 
 ```php
 $Response = $Gluwa->getPaymentQRCode([
@@ -88,7 +88,7 @@ $Response = $Gluwa->getPaymentQRCode([
 <img src="data:image/png;base64,{BASE64_STRING_YOU_RECEIVED}" alt="Gluwa Payment QR Code">
 ```
 
-#### [List Transaction History for an Address](../api/api.md#list-transaction-history-for-an-address)
+#### [List Transaction History for an Address](https://docs.gluwa.com/api/api.md#list-transaction-history-for-an-address)
 
 ```php
 $Response = $Gluwa->getListTransactionHistory([
@@ -99,7 +99,7 @@ $Response = $Gluwa->getListTransactionHistory([
 ]);
 ```
 
-#### [Retrieve Transaction Details by Hash](../api/api.md#retrieve-transaction-details-by-hash)
+#### [Retrieve Transaction Details by Hash](https://docs.gluwa.com/api/api.md#retrieve-transaction-details-by-hash)
 
 ```php
 $Response = $Gluwa->getListTransactionDetail([
@@ -108,7 +108,7 @@ $Response = $Gluwa->getListTransactionDetail([
 ]);
 ```
 
-#### [Retrieve a Balance for an Address](../api/api.md#retrieve-a-balance-for-an-address)
+#### [Retrieve a Balance for an Address](https://docs.gluwa.com/api/api.md#retrieve-a-balance-for-an-address)
 
 ```php
 $Response = $Gluwa->getAddresses([
@@ -116,7 +116,7 @@ $Response = $Gluwa->getAddresses([
 ]);
 ```
 
-#### [Webhook Validation](webhooks.md#step-3-verify-your-wallet-address)
+#### [Webhook Validation](https://docs.gluwa.com/development/webhooks#step-3-verify-your-wallet-address)
 
 When user completes transfer via the QR code, the Gluwa API sends a webhook to your webhook endpoint. Verify that the values ​​actually sent by the Gluwa server are correct.
 
