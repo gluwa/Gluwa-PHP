@@ -152,6 +152,12 @@ class Gluwa {
             } else {
                 return '0x4cc8486f2f3dce2d3b5e27057cf565e16906d12d';
             }
+        } else if ($Currency === 'sNGNG') {
+            if ($__DEV__) {
+                return '0x5cb4744Bb6bcC360A63f54499d92c7617F0a8f8c';
+            } else {
+                return '0xc33496C93AaFf765e4925A4E3b873d5efc635405';
+            }
         }
     }
 
@@ -266,6 +272,36 @@ class Gluwa {
         }
     }
 
+    private function crypto_rand($length = 1) {
+        $returnStr = '';
+
+        for ($i = 0; $i < $length; $i ++) {
+            $range = 10; // because $max is inclusive
+            $bits = ceil(log(($range),2));
+            $bytes = ceil($bits/8.0);
+            $bits_max = 1 << $bits;
+            // e.g. if $range = 3000 (bin: 101110111000)
+            //  +--------+--------+
+            //  |....1011|10111000|
+            //  +--------+--------+
+            //  bits=12, bytes=2, bits_max=2^12=4096
+            $num = 0;
+            do {
+                $num = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes))) % $bits_max;
+                if ($num >= $range) {
+                    continue; // start over instead of accepting bias
+                    // else
+                    $num = $num % $range;  // to hell with security
+                }
+                break;
+            } while (True);  // because goto attracts velociraptors
+
+            $returnStr = $returnStr . $num;
+        }
+
+        return $returnStr;
+    }
+
     public function postTransaction(array $htArg = []) {
         if ($this->FunctionExists['ok'] === false) {
             return $this->FunctionExists['error'];
@@ -288,7 +324,11 @@ class Gluwa {
         if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             $Fee = $Result['response']['MinimumFee'];
 
-            $Nonce = time();
+            $MicroTime = microtime(false);
+            list($Usec, $Sec) = explode(" ", $MicroTime);
+            $Usec = (string)($Usec * 100000);
+            $CryptoRand = $this->crypto_rand(4);
+            $Nonce = time() . substr($Usec, 0, 3) . $CryptoRand;
 
             $ConvertedAmount = strval(Ethereum::toWei($Amount, "ether"));
             $ConvertedFee = strval(Ethereum::toWei($Fee, "ether"));
