@@ -4,6 +4,7 @@ If your service is developed in PHP, the features we provide are available throu
 
 ## Update
 
+v1.1.0 - Add support sNGNG \(20/05/2021\)
 v1.0.9 - Add support sUSDCG \(01/06/2021\)
 
 ## Getting started
