@@ -318,8 +318,7 @@ class Gluwa {
         if ($Result['code'] >= 200 && $Result['code'] <= 300) {
             $Fee = $Result['response']['MinimumFee'];
 
-            $Nonce = time();
-            // $Nonce = $this->getCryptoRandom(75);
+            $Nonce = $this->getCryptoRandom(75);
 
             $ConvertedAmount = strval(Ethereum::toWei($Amount, "ether"));
             $ConvertedFee = strval(Ethereum::toWei($Fee, "ether"));
