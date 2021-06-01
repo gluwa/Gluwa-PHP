@@ -274,21 +274,19 @@ class Gluwa {
 
     private function getCryptoRandom($length = 1) {
         $returnStr = '';
+        $range = 10;
+        $bits = ceil(log(($range), 2));
+        $bytes = ceil($bits / 8.0);
+        $bits_max = 1 << $bits;
 
         for ($i = 0; $i < $length; $i++) {
-            $range = 10;
-            $bits = ceil(log(($range), 2));
-            $bytes = ceil($bits / 8.0);
-            $bits_max = 1 << $bits;
-            $num = 0;
             do {
-                $num = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes))) % $bits_max;
+                $num = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes, $cstrong))) % $bits_max;
                 if ($num >= $range || ($i === 0 && $num === 0)) {
                     continue;
-                    $num = $num % $range;
                 }
                 break;
-            } while (True);
+            } while (true);
 
             $returnStr = $returnStr . $num;
         }
