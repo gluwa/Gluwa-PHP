@@ -308,8 +308,10 @@ class Gluwa {
             ],
             'sUrl' => $this->host . '/v1/' . $htArg['Currency'] . '/Fee',
             'sMethod' => 'GET',
-            'sParamType' => 'JSON',
-            'aParam' => []
+            'sParamType' => 'Array',
+            'aParam' => [
+                'amount' => $htArg['Amount'],
+            ]
         ];
 
         $Result = $this->curl($Args);
@@ -382,7 +384,7 @@ class Gluwa {
             ],
             'sUrl' => $this->host . '/v1/' . $htArg['Currency'] . '/Addresses/' . $this->MasterEthereumAddress . '/Transactions',
             'sMethod' => 'GET',
-            'sParamType' => 'JSON',
+            'sParamType' => 'Array',
             'aParam' => [
                 'Limit' => $htArg['Limit'] ? $htArg['Limit'] : 100,
                 'Status' => $htArg['Status'] ? $htArg['Status'] : 'Confirmed',
