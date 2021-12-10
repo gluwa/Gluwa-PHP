@@ -32,4 +32,4 @@ jobs:
         composer install --prefer-dist --no-progress --dev
 
     - name: Run test suite
-      run: phpunit test
+      run: vendor/bin/phpunit test
