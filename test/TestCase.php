@@ -21,5 +21,5 @@ class TestCase extends BaseTestCase
         parent::setUp();
     }
 
-    public function tearDown() {}
+    protected function tearDown(): void {}
 }
