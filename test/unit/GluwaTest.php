@@ -5,7 +5,7 @@ namespace Gluwa;
 use Gluwa\Gluwa;
 use \Gluwa\GluwaSDKException as GluwaException;
 
-class GluwaTest extends TestCase
+class GluwaTest extends PHPUnit\Framework\TestCase
 {
 
     private $Gluwa = null;
