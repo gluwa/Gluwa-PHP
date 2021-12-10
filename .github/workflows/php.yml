@@ -27,7 +27,9 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --dev
+      run: |
+        composer update
+        composer install --prefer-dist --no-progress --dev
 
     - name: Run test suite
       run: composer run-script test
