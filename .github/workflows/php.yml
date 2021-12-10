@@ -32,4 +32,12 @@ jobs:
         composer install --prefer-dist --no-progress --dev
 
     - name: Run test suite
+      env:
+        GLUWA_API_KEY: ${{ secrets.GLUWA_API_KEY }}
+        GLUWA_API_SECRET: ${{ secrets.GLUWA_API_SECRET }}
+        GLUWA_ETHEREUM_ADDRESS: ${{ secrets.GLUWA_ETHEREUM_ADDRESS }}
+        GLUWA_ETHEREUM_PRIVATE_KEY: ${{ secrets.GLUWA_ETHEREUM_PRIVATE_KEY }}
+        GLUWA_WEBHOOK_PAYLOAD: ${{ secrets.GLUWA_WEBHOOK_PAYLOAD }}
+        GLUWA_WEBHOOK_SECRET: ${{ secrets.GLUWA_WEBHOOK_SECRET }}
+        GLUWA_WEBHOOK_SIGNATURE: ${{ secrets.GLUWA_WEBHOOK_SIGNATURE }}
       run: vendor/bin/phpunit test
