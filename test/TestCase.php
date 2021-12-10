@@ -16,7 +16,7 @@ class TestCase extends BaseTestCase
 
     protected $testPublicKey = '';
 
-    public function setUp() {
+    protected function setUp(): void {
         $this->sigSerializer = new HexSignatureSerializer();
         parent::setUp();
     }
