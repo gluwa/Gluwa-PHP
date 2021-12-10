@@ -43,13 +43,13 @@ class GluwaTest extends TestCase
     private $GetAddresses_Currency = 'USDG';
 
     public function __construct() {
-        $this->Configuration_APIKey = $_ENV["GLUWA_API_KEY"];
-        $this->Configuration_APISecret = $_ENV["GLUWA_API_SECRET"];
-        $this->Configuration_WebhookSecret = $_ENV["GLUWA_WEBHOOK_SECRET"];
-        $this->Configuration_MasterEthereumPrivateKey = $_ENV["GLUWA_ETHEREUM_PRIVATE_KEY"];
-        $this->Configuration_MasterEthereumAddress = $_ENV["GLUWA_ETHEREUM_ADDRESS"];
-        $this->ValidateWebhook_Payload = $_ENV["GLUWA_WEBHOOK_PAYLOAD"];
-        $this->ValidateWebhook_Signature = $_ENV["GLUWA_WEBHOOK_SIGNATURE"];
+        $this->Configuration_APIKey = getenv("GLUWA_API_KEY");
+        $this->Configuration_APISecret = getenv("GLUWA_API_SECRET");
+        $this->Configuration_WebhookSecret = getenv("GLUWA_WEBHOOK_SECRET");
+        $this->Configuration_MasterEthereumPrivateKey = getenv("GLUWA_ETHEREUM_PRIVATE_KEY");
+        $this->Configuration_MasterEthereumAddress = getenv("GLUWA_ETHEREUM_ADDRESS");
+        $this->ValidateWebhook_Payload = getenv("GLUWA_WEBHOOK_PAYLOAD");
+        $this->ValidateWebhook_Signature = getenv("GLUWA_WEBHOOK_SIGNATURE");
     }
 
     /**
