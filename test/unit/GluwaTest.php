@@ -43,7 +43,6 @@ class GluwaTest extends TestCase
     private $GetAddresses_Currency = 'USDG';
 
     public function __construct() {
-        $this->api_key = env('MSG91_KEY');
         $this->Configuration_APIKey = $_ENV["GLUWA_API_KEY"];
         $this->Configuration_APISecret = $_ENV["GLUWA_API_SECRET"];
         $this->Configuration_WebhookSecret = $_ENV["GLUWA_WEBHOOK_SECRET"];
