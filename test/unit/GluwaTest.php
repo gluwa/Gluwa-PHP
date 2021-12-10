@@ -11,12 +11,14 @@ class GluwaTest extends TestCase
     private $Gluwa = null;
 
     private $Configuration_DEV = true;
-    var $Configuration_APIKey = $_ENV["GLUWA_API_KEY"];
-    var $Configuration_APISecret = $_ENV["GLUWA_API_SECRET"];
-    var $Configuration_WebhookSecret = $_ENV["GLUWA_WEBHOOK_SECRET"];
-    var $Configuration_MasterEthereumPrivateKey = $_ENV["GLUWA_ETHEREUM_PRIVATE_KEY"];
-    var $Configuration_MasterEthereumAddress = $_ENV["GLUWA_ETHEREUM_ADDRESS"];
-
+    private $Configuration_APIKey;
+    private $Configuration_APISecret;
+    private $Configuration_WebhookSecret;
+    private $Configuration_MasterEthereumPrivateKey;
+    private $Configuration_MasterEthereumAddress;
+    private $ValidateWebhook_Payload;
+    private $ValidateWebhook_Signature;
+    
     private $PostTransaction_Currency = 'USDG';
     private $PostTransaction_Amount = '0.1';
     private $PostTransaction_Target = '0x39810aEf19d717c089Cea84CE5F3c4890fA705Ac';
@@ -39,10 +41,17 @@ class GluwaTest extends TestCase
     private $GetListTransactionDetail_TxnHash = '0xb4984ec8aa5a9e5c6ea453cc02b43eafb28bdc589360ea34de9427be483763a4';
 
     private $GetAddresses_Currency = 'USDG';
-    
-    var $ValidateWebhook_Payload = $_ENV["GLUWA_WEBHOOK_PAYLOAD"];
-    var $ValidateWebhook_Signature = $_ENV["GLUWA_WEBHOOK_SIGNATURE"];
 
+    public function __construct() {
+        $this->api_key = env('MSG91_KEY');
+        $this->Configuration_APIKey = $_ENV["GLUWA_API_KEY"];
+        $this->Configuration_APISecret = $_ENV["GLUWA_API_SECRET"];
+        $this->Configuration_WebhookSecret = $_ENV["GLUWA_WEBHOOK_SECRET"];
+        $this->Configuration_MasterEthereumPrivateKey = $_ENV["GLUWA_ETHEREUM_PRIVATE_KEY"];
+        $this->Configuration_MasterEthereumAddress = $_ENV["GLUWA_ETHEREUM_ADDRESS"];
+        $this->ValidateWebhook_Payload = $_ENV["GLUWA_WEBHOOK_PAYLOAD"];
+        $this->ValidateWebhook_Signature = $_ENV["GLUWA_WEBHOOK_SIGNATURE"];
+    }
 
     /**
      * Init Gluwa
