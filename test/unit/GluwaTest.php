@@ -11,11 +11,11 @@ class GluwaTest extends TestCase
     private $Gluwa = null;
 
     private $Configuration_DEV = true;
-    private $Configuration_APIKey = '';
-    private $Configuration_APISecret = '';
-    private $Configuration_WebhookSecret = '';
-    private $Configuration_MasterEthereumPrivateKey = '';
-    private $Configuration_MasterEthereumAddress = '';
+    private $Configuration_APIKey = $_ENV["GLUWA_API_KEY"];
+    private $Configuration_APISecret = $_ENV["GLUWA_API_SECRET"];
+    private $Configuration_WebhookSecret = $_ENV["GLUWA_WEBHOOK_SECRET"];
+    private $Configuration_MasterEthereumPrivateKey = $_ENV["GLUWA_ETHEREUM_PRIVATE_KEY"];
+    private $Configuration_MasterEthereumAddress = $_ENV["GLUWA_ETHEREUM_ADDRESS"];
 
     private $PostTransaction_Currency = 'USDG';
     private $PostTransaction_Amount = '0.1';
@@ -40,8 +40,8 @@ class GluwaTest extends TestCase
 
     private $GetAddresses_Currency = 'USDG';
     
-    private $ValidateWebhook_Payload = '';
-    private $ValidateWebhook_Signature = '';
+    private $ValidateWebhook_Payload = $_ENV["GLUWA_WEBHOOK_PAYLOAD"];
+    private $ValidateWebhook_Signature = $_ENV["GLUWA_WEBHOOK_SIGNATURE"];
 
 
     /**
