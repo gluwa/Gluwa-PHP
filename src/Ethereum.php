@@ -35,6 +35,12 @@ class Ethereum
                 $value = hex2bin($value);
             }
 
+            elseif ($type == 'uint8') {
+                $value = self::dec2hex($value);
+                $value = str_pad($value, 8 / 8 * 2, 0, STR_PAD_LEFT);
+                $value = hex2bin($value);
+            }
+
             $message .= $value;
 
         }
