@@ -12,9 +12,9 @@ class TestCase extends BaseTestCase
 
     protected $signed = '';
 
-    protected $testPrivateKey = '';
+    protected $testPrivateKey = getenv("GLUWA_ETHEREUM_PRIVATE_KEY");
 
-    protected $testPublicKey = '';
+    protected $testPublicKey = getenv("GLUWA_ETHEREUM_ADDRESS");
 
     protected function setUp(): void {
         $this->sigSerializer = new HexSignatureSerializer();
