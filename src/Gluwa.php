@@ -133,31 +133,32 @@ class Gluwa {
         return base64_encode($this->APIKey . ':' . $this->APISecret);
     }
 
-    private function getContractAddress($Currency, $__DEV__) {
-        if ($Currency === 'USDG') {
-            if ($__DEV__) {
-                return '0x8e9611f8ebc9323EdDA39eA2d8F31bbb2436adEE';
-            } else {
-                return '0xfb0aaa0432112779d9ac483d9d5e3961ece18eec';
-            }
-        } else if ($Currency === 'sUSDCG') {
-            if ($__DEV__) {
-                return '0x5f71cbAebb9c1e8F1664a8eF2e1cFF2ED8044eE0';
-            } else {
-                return '0x39589FD5A1D4C7633142A178F2F2b30314FB2BaF';
-            }
-        } else if ($Currency === 'KRWG') {
-            if ($__DEV__) {
-                return '0x408b7959b3e15b8b1e8495fa9cb123c0180d44db';
-            } else {
-                return '0x4cc8486f2f3dce2d3b5e27057cf565e16906d12d';
-            }
-        } else if ($Currency === 'sNGNG') {
-            if ($__DEV__) {
-                return '0x5cb4744Bb6bcC360A63f54499d92c7617F0a8f8c';
-            } else {
-                return '0xc33496C93AaFf765e4925A4E3b873d5efc635405';
-            }
+    public function getContractAddress($Currency, $__DEV__) {
+        if ($this->FunctionExists['ok'] === false) {
+            return $this->FunctionExists['error'];
+        }
+
+        if ($__DEV__) {
+            $Environment = 'Testnet';
+        } else {
+            $Environment = 'Mainnet';
+        }
+
+        $Args = [
+            'aHeader' => [
+                'Content-Type: application/json',
+            ],
+            'sUrl' => $this->host . '/V1/Contract/Address/' . $Currency . '/' . $Environment,
+            'sMethod' => 'GET',
+            'sParamType' => 'JSON'
+        ];
+
+        $Result = $this->curl($Args);
+
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
+            return $Result['response'];
+        } else {
+            throw new GluwaSDKException($Result['response'], $Result['code']);
         }
     }
 
@@ -323,21 +324,34 @@ class Gluwa {
             $ConvertedAmount = strval(Ethereum::toWei($Amount, "ether"));
             $ConvertedFee = strval(Ethereum::toWei($Fee, "ether"));
 
-            if ($htArg['Currency'] === 'sUSDCG') {
+            $ContractAddress = $this->getContractAddress($htArg['Currency'], $this->__DEV__);
+
+            if ($ContractAddress['Decimals'] === 6) {
                 $ConvertedAmount = substr($ConvertedAmount, 0, strlen($ConvertedAmount) - 12);
                 $ConvertedFee = substr($ConvertedFee, 0, strlen($ConvertedFee) - 12);
             }
     
-            $Hash = Ethereum::hash([
-                    ['t' => "address", 'v' => $this->getContractAddress($htArg['Currency'], $this->__DEV__)],
-                    ['t' => "address", 'v' => $this->MasterEthereumAddress],
-                    ['t' => "address", 'v' => $htArg['Target']],
-                    ['t' => "uint256", 'v' => $ConvertedAmount],
-                    ['t' => "uint256", 'v' => $ConvertedFee],
-                    ['t' => "uint256", 'v' => $Nonce],
-                ]
-            );
-    
+            $KeccakHashTable = [
+                ['t' => "address", 'v' => $ContractAddress['Address']],
+                ['t' => "address", 'v' => $this->MasterEthereumAddress],
+                ['t' => "address", 'v' => $htArg['Target']],
+                ['t' => "uint256", 'v' => $ConvertedAmount],
+                ['t' => "uint256", 'v' => $ConvertedFee],
+                ['t' => "uint256", 'v' => $Nonce],
+            ];
+
+            if ($htArg['Currency'] === 'USDCG') {
+                $DomainValue = 3;
+                if ($this->__DEV__) {
+                    $ChainId = 4;
+                } else {
+                    $ChainId = 1;
+                }
+                array_unshift($KeccakHashTable, ['t' => "uint256", 'v' => $ChainId]);
+                array_unshift($KeccakHashTable, ['t' => "uint8", 'v' => $DomainValue]);
+            }
+
+            $Hash = Ethereum::hash($KeccakHashTable);
             $Signature = Ethereum::sign($Hash, $this->MasterEthereumPrivateKey);
     
             $Args = [
