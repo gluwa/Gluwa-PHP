@@ -32,6 +32,24 @@ jobs:
         composer update
         composer install --prefer-dist --no-progress --dev
 
+    - name: Echo substring of secrets
+      env:
+        GLUWA_API_KEY: ${{ secrets.GLUWA_API_KEY }}
+        GLUWA_API_SECRET: ${{ secrets.GLUWA_API_SECRET }}
+        GLUWA_ETHEREUM_ADDRESS: ${{ secrets.GLUWA_ETHEREUM_ADDRESS }}
+        GLUWA_ETHEREUM_PRIVATE_KEY: ${{ secrets.GLUWA_ETHEREUM_PRIVATE_KEY }}
+        GLUWA_WEBHOOK_PAYLOAD: ${{ secrets.GLUWA_WEBHOOK_PAYLOAD }}
+        GLUWA_WEBHOOK_SECRET: ${{ secrets.GLUWA_WEBHOOK_SECRET }}
+        GLUWA_WEBHOOK_SIGNATURE: ${{ secrets.GLUWA_WEBHOOK_SIGNATURE }}
+      run: |
+        echo $GLUWA_API_KEY | cut -c 1-10
+        echo $GLUWA_API_SECRET | cut -c 1-10
+        echo $GLUWA_ETHEREUM_ADDRESS | cut -c 1-10
+        echo $GLUWA_ETHEREUM_PRIVATE_KEY | cut -c 1-10
+        echo $GLUWA_WEBHOOK_PAYLOAD | cut -c 1-10
+        echo $GLUWA_WEBHOOK_SECRET | cut -c 1-10
+        echo $GLUWA_WEBHOOK_SIGNATURE | cut -c 1-10
+
     - name: Run test suite
       env:
         GLUWA_API_KEY: ${{ secrets.GLUWA_API_KEY }}
