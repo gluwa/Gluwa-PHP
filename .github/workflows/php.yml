@@ -42,13 +42,20 @@ jobs:
         GLUWA_WEBHOOK_SECRET: ${{ secrets.GLUWA_WEBHOOK_SECRET }}
         GLUWA_WEBHOOK_SIGNATURE: ${{ secrets.GLUWA_WEBHOOK_SIGNATURE }}
       run: |
-        echo "GLUWA_API_KEY: $($GLUWA_API_KEY | cut -c 1-10)"
-        echo "GLUWA_API_SECRET: $($GLUWA_API_SECRET | cut -c 1-10)"
-        echo "GLUWA_ETHEREUM_ADDRESS: $($GLUWA_ETHEREUM_ADDRESS | cut -c 1-10)"
-        echo "GLUWA_ETHEREUM_PRIVATE_KEY: $($GLUWA_ETHEREUM_PRIVATE_KEY | cut -c 1-10)"
-        echo "GLUWA_WEBHOOK_PAYLOAD: $($GLUWA_WEBHOOK_PAYLOAD | cut -c 1-10)"
-        echo "GLUWA_WEBHOOK_SECRET: $($GLUWA_WEBHOOK_SECRET | cut -c 1-10)"
-        echo "GLUWA_WEBHOOK_SIGNATURE: $($GLUWA_WEBHOOK_SIGNATURE | cut -c 1-10)"
+        echo "GLUWA_API_KEY:"
+        echo $GLUWA_API_KEY | cut -c 1-10
+        echo "GLUWA_API_SECRET:"
+        echo $GLUWA_API_SECRET | cut -c 1-10
+        echo "GLUWA_ETHEREUM_ADDRESS:"
+        echo $GLUWA_ETHEREUM_ADDRESS | cut -c 1-10
+        echo "GLUWA_ETHEREUM_PRIVATE_KEY:"
+        echo $GLUWA_ETHEREUM_PRIVATE_KEY | cut -c 1-10
+        echo "GLUWA_WEBHOOK_PAYLOAD:"
+        echo $GLUWA_WEBHOOK_PAYLOAD | cut -c 1-10
+        echo "GLUWA_WEBHOOK_SECRET:"
+        echo $GLUWA_WEBHOOK_SECRET | cut -c 1-10
+        echo "GLUWA_WEBHOOK_SIGNATURE:"
+        echo $GLUWA_WEBHOOK_SIGNATURE | cut -c 1-10
 
     - name: Run test suite
       env:
