@@ -56,6 +56,8 @@ class GluwaTest extends TestCase
      * Init Gluwa
      */
     protected function setUp(): void {
+        echo $this->Configuration_DEV;
+        echo $this->Configuration_MasterEthereumAddress;
         parent::setUp();
         $this->Gluwa = new Gluwa([
             '__DEV__' => $this->Configuration_DEV, // If you want to run test on testnet, change this value to true. APIKey, APISecret and WebhookSecret must be filled with the values ​​obtained from Gluwa Dashboard's Sandbox Mode.
