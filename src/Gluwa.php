@@ -248,6 +248,41 @@ class Gluwa {
         }
     }
 
+    public function getPaymentQRCodeWithPayload(array $htArg = []) {
+        if ($this->FunctionExists['ok'] === false) {
+            return $this->FunctionExists['error'];
+        }
+
+        $Signature = $this->getTimestampSignature();
+
+        $Args = [
+            'aHeader' => [
+                'Content-Type: application/json',
+                'Authorization: Basic '.$this->getAuthorization(),
+            ],
+            'sUrl' => $this->host . '/v1/QRCode/payload',
+            'sMethod' => 'POST',
+            'sParamType' => 'JSON',
+            'aParam' => [
+                'Signature' => $Signature,
+                'Currency' => $htArg['Currency'],
+                'Target' => $this->MasterEthereumAddress,
+                'Amount' => $htArg['Amount'],
+                'MerchantOrderID' => $htArg['MerchantOrderID'],
+                'Note' => $htArg['Note'],
+                'Expiry' => $htArg['Expiry'],
+            ]
+        ];
+
+        $Result = $this->curl($Args);
+        
+        if ($Result['code'] >= 200 && $Result['code'] <= 300) {
+            return $Result;
+        } else {
+            throw new GluwaSDKException($Result['response'], $Result['code']);
+        }
+    }
+
     public function getAddresses(array $htArg = []) {
         if ($this->FunctionExists['ok'] === false) {
             return $this->FunctionExists['error'];
