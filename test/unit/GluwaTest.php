@@ -19,28 +19,28 @@ class GluwaTest extends TestCase
     private $ValidateWebhook_Payload;
     private $ValidateWebhook_Signature;
     
-    private $PostTransaction_Currency = 'USDG';
-    private $PostTransaction_Amount = '0.1';
+    private $PostTransaction_Currency = 'sUSDCG';
+    private $PostTransaction_Amount = '1';
     private $PostTransaction_Target = '0x39810aEf19d717c089Cea84CE5F3c4890fA705Ac';
     private $PostTransaction_MerchantOrderID = '';
     private $PostTransaction_Note = '';
     private $PostTransaction_Expiry = 1800;
 
-    private $GetPaymentQRCode_Currency = 'USDG';
+    private $GetPaymentQRCode_Currency = 'sUSDCG';
     private $GetPaymentQRCode_Amount = '1';
     private $GetPaymentQRCode_Note = 'NoteContent';
     private $GetPaymentQRCode_MerchantOrderID = '250';
     private $GetPaymentQRCode_Expiry = 1800;
 
-    private $GetListTransactionHistory_Currency = 'USDG';
+    private $GetListTransactionHistory_Currency = 'sUSDCG';
     private $GetListTransactionHistory_Limit = '100';
     private $GetListTransactionHistory_Status = 'Confirmed';
     private $GetListTransactionHistory_Offset = '0';
 
-    private $GetListTransactionDetail_Currency = 'USDG';
+    private $GetListTransactionDetail_Currency = 'sUSDCG';
     private $GetListTransactionDetail_TxnHash = '0xb4984ec8aa5a9e5c6ea453cc02b43eafb28bdc589360ea34de9427be483763a4';
 
-    private $GetAddresses_Currency = 'USDG';
+    private $GetAddresses_Currency = 'sUSDCG';
 
     public function __construct() {
         $this->Configuration_APIKey = getenv("GLUWA_API_KEY");
