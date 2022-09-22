@@ -378,7 +378,7 @@ class Gluwa {
             if ($htArg['Currency'] === 'USDCG') {
                 $DomainValue = 3;
                 if ($this->__DEV__) {
-                    $ChainId = 4;
+                    $ChainId = 5;
                 } else {
                     $ChainId = 1;
                 }
