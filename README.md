@@ -15,7 +15,7 @@ Download the PHP Package below and upload it to your server. The SDK requires PH
 $ composer require gluwa/gluwa-php
 ```
 
-Create and initialize a `Gluwa` object. Then, enter the `APIKey`, `APISecret` and `WebookSecret` generated from the [Gluwa Dashboard](https://dashboard.gluwa.com), and an Ethereum wallet to manage your funds. You can use credentials from sandbox dashboard and a Rinkeby wallet if you want to test in the sandbox environment.
+Create and initialize a `Gluwa` object. Then, enter the `APIKey`, `APISecret` and `WebookSecret` generated from the [Gluwa Dashboard](https://dashboard.gluwa.com), and an Ethereum wallet to manage your funds. You can use credentials from sandbox dashboard and a Goerli wallet if you want to test in the sandbox environment.
 
 ```php
 <?php
